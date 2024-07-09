@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #f2f2f2;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      nav {
+        background: linear-gradient(to right, #56ab2f, #a8e063);
+        height: 3rem;
+        line-height: 3rem;
+        color: white;
+        padding-left: 2rem;
+        margin-bottom: 1rem;
+        border-radius: 8px 8px 0 0;
+      }
+
+      .container {
+        padding: 1rem;
+      }
+
+      #itemForm label {
+        display: block;
+        margin-bottom: 1rem;
+        font-weight: bold;
+        color: #333;
+      }
+
+      #itemForm input {
+        height: 2rem;
+        text-align: center;
+        border: 1px solid #bfbfbf;
+        border-radius: 5px;
+        width: calc(100% - 2rem);
+        margin-bottom: 1rem;
+        padding: 0 1rem;
+      }
+
+      #quantityInput, #priceInput {
+        width: 100px;
+      }
+
+      #addItemButton {
+        border: none;
+        background: #0074D9;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      #addItemButton:hover {
+        background: #005bb5;
+      }
+
+      #itemsDiv {
+        margin-top: 2rem;
+      }
+
+      .item {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        background: #eaeaea;
+        margin-bottom: 0.5rem;
+        border-radius: 5px;
+        padding: 0.5rem;
+        align-items: center;
+      }
+
+      .checkbox {
+        height: 100%;
+        width: 2.5rem;
+      }
+
+      .itemInfo {
+        text-align: center;
+      }
+
+      .deleteButton {
+        margin: 0 0 0 auto;
+        border: unset;
+        background: #b10000;
+        color: white;
+        font-size: 0.8rem;
+        width: 2.5rem;
+        height: 100%;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .deleteButton:hover {
+        background: #8a0000;
+      }
+
+      .purchased {
+        background: #00805a;
+        color: white;
+      }
+
+      .purchased p {
+        text-decoration: line-through;
+      }
+
+      .form {
+        height: auto;
+        width: 400px;
+        background: #fff;
+        position: relative;
+        border-radius: 10px;
+        border: 2px solid #56ab2f;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 20px 35px;
+        transition: transform 0.3s ease;
+      }
+
+      .form:hover {
+        transform: scale(1.02);
+      }
+    </style>
+    <script src="dexie.min.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js');
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div class="form">
+      <nav>
+        <p>My List</p>
+      </nav>
+
+      <div class="container">
+        <form id="itemForm">
+          <label>
+            Name of Item:
+            <input type="text" id="nameInput" required>
+          </label>
+          <label>
+            Quantity:<center></center>
+            <input type="number" id="quantityInput" value="1">
+          </label>
+          <label>
+            Price:<center></center>
+            <input type="number" id="priceInput" value="0">
+          </label>
+          <button type="submit" id="addItemButton">Add Item</button>
+        </form>
+      </div>
+      <div id="itemsDiv"></div>
+      <div id="totalPriceDiv"></div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
