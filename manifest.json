@@ -3,7 +3,7 @@
     "short_name": "Lena Shop App",
     "icons": [
         {
-            "src": "./shopapp.png",
+            "src": "./assets/shopapp.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "any maskable"
